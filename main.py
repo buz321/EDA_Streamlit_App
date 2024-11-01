@@ -44,7 +44,7 @@ if uploaded_file is not None:
     selected_column = st.selectbox("Select a column to plot:", numeric_columns)
 
     # Select plot type
-    plot_type = st.selectbox("Choose a plot type:", ["Line Plot", "Box Plot", "Bar Plot"])
+    plot_type = st.selectbox("Choose a plot type:", ["Line Plot", "Box Plot", "Distribution Plot"])
 
     # Generate selected plot
     if plot_type == "Line Plot":
@@ -63,11 +63,11 @@ if uploaded_file is not None:
         ax.set_title(f"Box Plot of {selected_column}")
         st.pyplot(fig)
 
-    elif plot_type == "Bar Plot":
-        st.subheader("Bar Plot")
+    elif plot_type == "Distribution Plot":
+        st.subheader("Distribution Plot")
         fig, ax = plt.subplots()
-        df[selected_column].value_counts().plot(kind="bar", ax=ax, color="lightgreen")
-        ax.set_title(f"Bar Plot of {selected_column}")
+        sns.histplot(df[selected_column], kde=True, ax=ax, color="lightblue")
+        ax.set_title(f"Distribution Plot of {selected_column}")
         ax.set_xlabel(selected_column)
         ax.set_ylabel("Frequency")
         st.pyplot(fig)
