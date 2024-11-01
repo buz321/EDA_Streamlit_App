@@ -15,14 +15,18 @@ def detect_outliers_zscore(df, threshold=3):
 
 # Streamlit app
 st.title("Outlier Detection App with Z-Score")
-st.write("Upload a dataset to visualize and count outliers for each numerical variable.")
+st.write("Upload a dataset (CSV or Excel) to visualize and count outliers for each numerical variable.")
 
-# File uploader
-uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+# File uploader to accept CSV and Excel files
+uploaded_file = st.file_uploader("Choose a file", type=["csv", "xls", "xlsx"])
 
 if uploaded_file is not None:
-    # Load data
-    df = pd.read_csv(uploaded_file)
+    # Check the file extension and read the file accordingly
+    if uploaded_file.name.endswith('.csv'):
+        df = pd.read_csv(uploaded_file)
+    else:
+        df = pd.read_excel(uploaded_file)
+
     st.write("Dataset Overview:", df.head())
 
     # Detect outliers
@@ -40,5 +44,4 @@ if uploaded_file is not None:
         ax.set_xlabel(column)
         st.pyplot(fig)
 else:
-    st.write("Please upload a CSV file to get started.")
-
+    st.write("Please upload a CSV or Excel file to get started.")
