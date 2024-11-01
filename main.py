@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 from scipy.stats import zscore
 
 # Function to detect outliers using Z-score
@@ -14,7 +15,7 @@ def detect_outliers_zscore(df, threshold=3):
     return outliers_count
 
 # Streamlit app
-st.title("Outlier Detection App with Z-Score")
+st.title("Data Analysis and Visualization App")
 st.write("Upload a dataset (CSV or Excel) to visualize and count outliers for each numerical variable.")
 
 # File uploader to accept CSV and Excel files
@@ -35,13 +36,40 @@ if uploaded_file is not None:
     outliers_df = pd.DataFrame(list(outliers_count.items()), columns=['Variable', 'Outlier Count'])
     st.write(outliers_df)
 
-    # Plot box plots with outliers
-    st.subheader("Box Plot of Each Variable with Outliers")
-    for column in df.select_dtypes(include=[np.number]):
+    # Plot selection
+    st.subheader("Choose a Plot to Visualize Data")
+    
+    # Select variable for plotting
+    numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
+    selected_column = st.selectbox("Select a column to plot:", numeric_columns)
+
+    # Select plot type
+    plot_type = st.selectbox("Choose a plot type:", ["Line Plot", "Box Plot", "Bar Plot"])
+
+    # Generate selected plot
+    if plot_type == "Line Plot":
+        st.subheader("Line Plot")
         fig, ax = plt.subplots()
-        ax.boxplot(df[column].dropna(), vert=False)
-        ax.set_title(f'Box Plot of {column}')
-        ax.set_xlabel(column)
+        ax.plot(df[selected_column], color="skyblue")
+        ax.set_title(f"Line Plot of {selected_column}")
+        ax.set_xlabel("Index")
+        ax.set_ylabel(selected_column)
+        st.pyplot(fig)
+
+    elif plot_type == "Box Plot":
+        st.subheader("Box Plot")
+        fig, ax = plt.subplots()
+        sns.boxplot(data=df, y=selected_column, ax=ax, color="lightcoral")
+        ax.set_title(f"Box Plot of {selected_column}")
+        st.pyplot(fig)
+
+    elif plot_type == "Bar Plot":
+        st.subheader("Bar Plot")
+        fig, ax = plt.subplots()
+        df[selected_column].value_counts().plot(kind="bar", ax=ax, color="lightgreen")
+        ax.set_title(f"Bar Plot of {selected_column}")
+        ax.set_xlabel(selected_column)
+        ax.set_ylabel("Frequency")
         st.pyplot(fig)
 else:
     st.write("Please upload a CSV or Excel file to get started.")
