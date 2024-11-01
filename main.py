@@ -15,7 +15,7 @@ def detect_outliers_zscore(df, threshold=3):
     return outliers_count
 
 # Streamlit app
-st.title("Data Analysis and Visualization App")
+st.title(":bar_chart: Data Analysis and Visualization App")
 st.write("Upload a dataset (CSV or Excel) to visualize and count outliers for each numerical variable.")
 
 # File uploader to accept CSV and Excel files
