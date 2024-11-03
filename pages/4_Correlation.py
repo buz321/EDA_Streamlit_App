@@ -15,6 +15,7 @@ if 'uploaded_data' in st.session_state:
     if numeric_df.shape[1] > 1:
         # Calculate correlation matrix
         st.write("### Correlation Matrix")
+        st.write("*Note: any missing values will be replaced as numeric zero as the* `.corr()` *function cannot handle actual missing values.*")
         correlation = numeric_df.corr().fillna(0)  # Replace NaNs if any
         st.write(correlation)
         
