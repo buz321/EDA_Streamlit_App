@@ -29,9 +29,13 @@ if 'uploaded_data' in st.session_state:
     high_corr_pairs = high_corr_pairs[high_corr_pairs != 1]  # Exclude self-correlation
     high_corr_pairs = high_corr_pairs[high_corr_pairs >= threshold].drop_duplicates()
     
-    # Display the highly correlated pairs
-    if not high_corr_pairs.empty:
-        st.write(high_corr_pairs)
+    # Convert to DataFrame with labeled columns
+    high_corr_df = pd.DataFrame(high_corr_pairs).reset_index()
+    high_corr_df.columns = ["Variable 1", "Variable 2", "Correlation"]  # Label columns
+
+    # Display the highly correlated pairs with labels
+    if not high_corr_df.empty:
+        st.write(high_corr_df)
     else:
         st.write("No pairs of variables have a correlation above the threshold.")
 else:
