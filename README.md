@@ -52,9 +52,13 @@ This repository contains a user-friendly **Exploratory Data Analysis (EDA) Web A
 
 ## Technologies Used
 
-- **Programming Language**: Python
-- **Framework**: Streamlit
-- **Libraries**: Pandas, Matplotlib, Seaborn, Plotly
+- **Programming Language**: ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+- **Framework**: ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+- **Libraries**: ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+  ![Matplotlib](https://img.shields.io/badge/Matplotlib-ffffff?style=for-the-badge&logo=matplotlib&logoColor=black)
+  ![Seaborn](https://img.shields.io/badge/Seaborn-2E4053?style=for-the-badge&logo=seaborn&logoColor=white)
+  ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
+
 
 ## Future Enhancements
 
