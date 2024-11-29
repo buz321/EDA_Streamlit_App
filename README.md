@@ -18,6 +18,28 @@ This repository contains a user-friendly **Exploratory Data Analysis (EDA) Web A
 - **Correlation Analysis**: Visualize relationships between variables using heatmaps.
 - **User-Friendly Interface**: Intuitive design powered by Streamlit, allowing easy navigation.
 
+## Installation
+1. Clone the repository by running the following command in your terminal:
+   ```bash
+   git clone https://github.com/buz321/EDA_Streamlit_App.git
+   ```
+   
+2. Navigate to the project directory:
+   ```bash
+   cd EDA_Streamlit_App
+   ```
+   
+3. Install the required dependencies using pip:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   
+4. Run the Streamlit application:
+   ```bash
+   streamlit run app.py
+   ```
+
+
 ## How to Use
 
 1. Upload your dataset (CSV format) using the upload feature.
