@@ -42,7 +42,7 @@ This repository contains a user-friendly **Exploratory Data Analysis (EDA) Web A
 
 ## How to Use
 
-1. Upload your dataset (CSV format) using the upload feature.
+1. Upload your dataset (CSV or XLSX format) using the upload feature.
 2. Explore the dataset through:
    - Descriptive statistics
    - Visualizations (histograms, scatter plots, bar charts, etc.)
